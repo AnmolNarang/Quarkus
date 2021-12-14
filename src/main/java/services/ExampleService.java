@@ -5,19 +5,21 @@ import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class ExampleService {
+
+
+
     public String withParam(String name){
         return "Hello Mr/Mrs " + name;
     }
 
     @ConfigProperty(name = "greeting")
     private String greeting;
-
-    public String withParamAndConfigFile(String name){
+    public String serviceParamMessageFromPropertyFile(String name){
         return greeting + " " + name;
     }
 
     public String postRequest(){
-        return "Post method response from Service Call";
+        return "HardCoded Post method response";
     }
 
     @ConfigProperty(name="putMethodResponse")

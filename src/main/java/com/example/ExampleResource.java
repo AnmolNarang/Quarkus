@@ -15,29 +15,30 @@ public class ExampleResource {
         return "Hello RESTEasy";
     }
 
+
     @Inject
     ExampleService exampleService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{name}")
-    public String withParam(@PathParam("name") String name) {
-        return exampleService.withParam(name);
+    public String paramMessageFromPropertyFile(@PathParam("name") String name) {
+        return exampleService.serviceParamMessageFromPropertyFile(name);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/t1/{name}")
-    public String withParamAndPath(@PathParam("name") String name) {
-        return exampleService.withParamAndConfigFile(name);
-    }
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/t1/{name}")
+//    public String withParamAndPath(@PathParam("name") String name) {
+//        return exampleService.withParamAndConfigFile(name);
+//    }
 
-    @POST
-    @Path("/t1")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String postOperation() {
-        return "It was Post Request without Using Service";
-    }
+//    @POST
+//    @Path("/t1")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String postOperation() {
+//        return "It was Post Request without Using Service";
+//    }
 
     @POST
     @Path("/t2")
@@ -59,6 +60,5 @@ public class ExampleResource {
     public String deleteOperationWithService() {
         return exampleService.deleteRequest();
     }
-
 
 }

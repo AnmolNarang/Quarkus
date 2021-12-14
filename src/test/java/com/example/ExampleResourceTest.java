@@ -29,17 +29,18 @@ public class ExampleResourceTest {
     }
 
     @Test
-    public void  testPathWithConfig()
+    @Order(2)
+    public void testParamMessageFromPropertyFile()
     {
-        given().when().get("/hello/t1/message")
+        given().when().get("/hello/message")
                 .then()
                 .statusCode(200)
-                .body(is("Welcome!! message"));
+                .body(is("This is Greeting Message from Property File: message"));
 
     }
 
     @Test
-    @Order(2)
+    @Order(3)
     public  void testPostMethod(){
         given()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
@@ -48,7 +49,20 @@ public class ExampleResourceTest {
                 .post("/hello/t2")
                 .then()
 //                .statusCode(Response.Status.CREATED.getStatusCode())
-                .body(is("Post method response from Service Call"));
+                .body(is("HardCoded Post method response"));
+    }
+
+    @Test
+    @Order(3)
+    public  void testDeleteMethod(){
+        given()
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
+                .when()
+                .delete("/hello/t2")
+                .then()
+//                .statusCode(Response.Status.CREATED.getStatusCode())
+                .body(is("Delete Call was made using Service Method"));
     }
 
     @Inject
@@ -64,7 +78,7 @@ public class ExampleResourceTest {
     @Order(3)
     public  void testPostMethodWithServiceInject()
     {
-        Assertions.assertEquals("Post method response from Service Call", exampleService.postRequest());
+        Assertions.assertEquals("HardCoded Post method response", exampleService.postRequest());
     }
     
     @Test
