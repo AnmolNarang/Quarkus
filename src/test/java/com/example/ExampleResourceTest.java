@@ -66,6 +66,20 @@ public class ExampleResourceTest {
     {
         Assertions.assertEquals("Post method response from Service Call", exampleService.postRequest());
     }
+    
+    @Test
+    @Order(4)
+    public  void testPutMethodWithServiceInject()
+    {
+        Assertions.assertEquals("Put Call was made using Service Method", exampleService.putRequest());
+    }
+    
+    @Test
+    @Order(4)
+    public  void testDeleteMethodWithServiceInject()
+    {
+        Assertions.assertEquals("Delete Call was made using Service Method", exampleService.deleteRequest());
+    }
 
 
 }
