@@ -1,5 +1,6 @@
 package com.example;
 
+import org.json.JSONObject;
 import services.ExampleService;
 
 import javax.inject.Inject;
@@ -22,7 +23,7 @@ public class ExampleResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return exampleService.withParam("");
+        return exampleService.withParam("Hello RESTEasy");
 
     }
 

@@ -25,7 +25,7 @@ public class ExampleResourceTest {
                 .when().get("/hello")
                 .then()
                 .statusCode(200)
-                .body(is("Hello RESTEasy"));
+                .body(is("Hello Mr/Mrs Hello RESTEasy"));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class ExampleResourceTest {
         given().when().get("/hello/message")
                 .then()
                 .statusCode(200)
-                .body(is("This is Greeting Message from Property File: message"));
+                .body(is("{\"greeting\":\"This is Greeting Message from Property File:\",\"name\":\"message\",\"age\":\"22\"}"));
 
     }
 
@@ -53,7 +53,7 @@ public class ExampleResourceTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     public  void testDeleteMethod(){
         given()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
@@ -62,7 +62,7 @@ public class ExampleResourceTest {
                 .delete("/hello/t2")
                 .then()
 //                .statusCode(Response.Status.CREATED.getStatusCode())
-                .body(is("Delete Call was made using Service Method"));
+                .body(is("{\"deleteMethod\":\"Delete Call was made using Service Method\"}"));
     }
 
     @Inject
@@ -80,19 +80,19 @@ public class ExampleResourceTest {
     {
         Assertions.assertEquals("HardCoded Post method response", exampleService.postRequest());
     }
-    
+
     @Test
     @Order(4)
     public  void testPutMethodWithServiceInject()
     {
-        Assertions.assertEquals("Put Call was made using Service Method", exampleService.putRequest());
+        Assertions.assertEquals("{\"putMethod\":\"Put Call was made using Service Method\"}", exampleService.putRequest());
     }
-    
+
     @Test
     @Order(4)
     public  void testDeleteMethodWithServiceInject()
     {
-        Assertions.assertEquals("Delete Call was made using Service Method", exampleService.deleteRequest());
+        Assertions.assertEquals("{\"deleteMethod\":\"Delete Call was made using Service Method\"}", exampleService.deleteRequest());
     }
 
 

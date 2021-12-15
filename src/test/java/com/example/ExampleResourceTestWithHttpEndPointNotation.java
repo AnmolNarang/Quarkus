@@ -24,7 +24,7 @@ public class ExampleResourceTestWithHttpEndPointNotation {
                 .when().get()
                 .then()
                 .statusCode(200)
-                .body(is("Hello RESTEasy"));
+                .body(is("Hello Mr/Mrs Hello RESTEasy"));
     }
 
 //    @Test

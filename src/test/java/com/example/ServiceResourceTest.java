@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
-import org.hamcrest.MatcherAssert.*;
 
 @QuarkusTest
 public class ServiceResourceTest {
