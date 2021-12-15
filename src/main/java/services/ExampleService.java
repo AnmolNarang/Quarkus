@@ -6,8 +6,6 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class ExampleService {
 
-
-
     public String withParam(String name){
         return "Hello Mr/Mrs " + name;
     }

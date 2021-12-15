@@ -9,4 +9,9 @@ public class ExampleServiceMockImplementationTest implements ExampleServiceMock 
     public String test() {
         return "Hello Dummy";
     }
+
+    @Override
+    public String method2() {
+        return "Test Mock";
+    }
 }

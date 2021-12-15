@@ -9,15 +9,23 @@ import javax.ws.rs.core.MediaType;
 @Path("/hello")
 public class ExampleResource {
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello RESTEasy";
-    }
+//    @GET
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public String hello() {
+//        return "Hello RESTEasy";
+//    }
 
 
     @Inject
     ExampleService exampleService;
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello() {
+        return exampleService.withParam("");
+
+    }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

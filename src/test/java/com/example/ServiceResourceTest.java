@@ -3,9 +3,13 @@ package com.example;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import services.ExampleServiceMock;
+
+import javax.inject.Inject;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import org.hamcrest.MatcherAssert.*;
 
 @QuarkusTest
 public class ServiceResourceTest {
@@ -19,4 +23,16 @@ public class ServiceResourceTest {
                 .statusCode(200)
                 .body(is("Hello Dummy"));
     }
+
+    @Inject
+    ExampleServiceMock exampleServiceMock;
+    @Test
+    @Order(2)
+    public void whiteBoxTest() {
+        assert(exampleServiceMock.test().contains("Hello"));
+        assert (exampleServiceMock.method2().contains("Test Mock"));
+
+    }
+
+
 }

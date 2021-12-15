@@ -9,4 +9,9 @@ public class ExampleServiceMockImplementation implements ExampleServiceMock {
         return "Hello";
     }
 
+    @Override
+    public String method2() {
+        return "2nd method";
+    }
+
 }
