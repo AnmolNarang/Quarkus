@@ -30,6 +30,15 @@ public class ExampleService {
         return "HardCoded Post method response";
     }
 
+    public String getSum(String json)
+    {
+        jo = new JSONObject(json);
+        int num1 = Integer.parseInt((String) jo.get("num1"));
+        int num2 = Integer.parseInt((String) jo.get("num2"));
+        jo.put("sum", sum(num1,num2));
+        return jo.toString();
+    }
+
     @ConfigProperty(name = "putMethodResponse")
     private String putMethodResponse;
 

@@ -10,13 +10,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/hello")
 public class ExampleResource {
 
-//    @GET
-//    @Produces(MediaType.TEXT_PLAIN)
-//    public String hello() {
-//        return "Hello RESTEasy";
-//    }
-
-
     @Inject
     ExampleService exampleService;
 
@@ -26,7 +19,6 @@ public class ExampleResource {
         return exampleService.withParam("Hello RESTEasy");
 
     }
-
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,6 +33,15 @@ public class ExampleResource {
     public String postOperationWithService() {
         return exampleService.postRequest();
     }
+
+    @POST
+    @Path("/v3")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getSumOfTwo() {
+        return exampleService.getSum("{\"num1\":\"1\",\"num2\":\"2\"}");
+    }
+
 
     @PUT
     @Path("/t2")
