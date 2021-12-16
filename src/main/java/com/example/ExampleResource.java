@@ -35,20 +35,6 @@ public class ExampleResource {
         return exampleService.serviceParamMessageFromPropertyFile(name);
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/t1/{name}")
-//    public String withParamAndPath(@PathParam("name") String name) {
-//        return exampleService.withParamAndConfigFile(name);
-//    }
-
-//    @POST
-//    @Path("/t1")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String postOperation() {
-//        return "It was Post Request without Using Service";
-//    }
-
     @POST
     @Path("/t2")
     @Produces(MediaType.APPLICATION_JSON)

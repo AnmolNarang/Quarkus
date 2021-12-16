@@ -1,4 +1,4 @@
-package com.example.mocks;
+package com.example.services;
 
 import io.quarkus.test.Mock;
 import services.ExampleServiceMock;
