@@ -48,6 +48,12 @@ public class ExampleService {
         return jo.toString();
     }
 
+
+    public int sum(int i, int j) {
+        return i + j;
+    }
+
+
 //    @ConfigProperty(name = "property_coming_from_properyFile")
 //    private String property_coming_from_properyFile;
 //

@@ -18,6 +18,7 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 public class ExampleResourceTest {
 
+    //BlackBox Test
     @Test
     @Order(1)
     public void testHelloEndpoint() {
@@ -28,6 +29,7 @@ public class ExampleResourceTest {
                 .body(is("Hello Mr/Mrs Hello RESTEasy"));
     }
 
+    //BlackBox Test
     @Test
     @Order(2)
     public void testParamMessageFromPropertyFile()
@@ -39,6 +41,7 @@ public class ExampleResourceTest {
 
     }
 
+    //BlackBox Test
     @Test
     @Order(3)
     public  void testPostMethod(){
@@ -52,6 +55,7 @@ public class ExampleResourceTest {
                 .body(is("HardCoded Post method response"));
     }
 
+    //BlackBox Test
     @Test
     @Order(4)
     public  void testDeleteMethod(){
@@ -68,12 +72,22 @@ public class ExampleResourceTest {
     @Inject
     ExampleService exampleService;
 
+    //WhiteBox Test
+    @Test
+    public void testSumMethod()
+    {
+        final int sum = exampleService.sum(1,3);
+        Assertions.assertEquals(sum, 4);
+    }
+
+    //WhiteBox Test
     @Test
     public void testAsInjection()
     {
         Assertions.assertEquals("Hello Mr/Mrs Anmol", exampleService.withParam("Anmol"));
     }
 
+    //WhiteBox Test
     @Test
     @Order(3)
     public  void testPostMethodWithServiceInject()
@@ -81,6 +95,7 @@ public class ExampleResourceTest {
         Assertions.assertEquals("HardCoded Post method response", exampleService.postRequest());
     }
 
+    //WhiteBox Test
     @Test
     @Order(4)
     public  void testPutMethodWithServiceInject()
@@ -88,6 +103,7 @@ public class ExampleResourceTest {
         Assertions.assertEquals("{\"putMethod\":\"Put Call was made using Service Method\"}", exampleService.putRequest());
     }
 
+    //WhiteBox Test
     @Test
     @Order(4)
     public  void testDeleteMethodWithServiceInject()
