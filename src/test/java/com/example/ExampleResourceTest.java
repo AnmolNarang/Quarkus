@@ -1,8 +1,6 @@
 package com.example;
 
 import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.internal.common.assertion.Assertion;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import services.ExampleService;
@@ -14,6 +12,7 @@ import javax.ws.rs.core.Response;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
 public class ExampleResourceTest {
@@ -77,14 +76,14 @@ public class ExampleResourceTest {
     public void testSumMethod()
     {
         final int sum = exampleService.sum(1,3);
-        Assertions.assertEquals(sum, 4);
+        assertEquals(sum, 4);
     }
 
     //WhiteBox Test
     @Test
     public void testAsInjection()
     {
-        Assertions.assertEquals("Hello Mr/Mrs Anmol", exampleService.withParam("Anmol"));
+        assertEquals("Hello Mr/Mrs Anmol", exampleService.withParam("Anmol"));
     }
 
     //WhiteBox Test
@@ -92,7 +91,7 @@ public class ExampleResourceTest {
     @Order(3)
     public  void testPostMethodWithServiceInject()
     {
-        Assertions.assertEquals("HardCoded Post method response", exampleService.postRequest());
+        assertEquals("HardCoded Post method response", exampleService.postRequest());
     }
 
     //WhiteBox Test
@@ -100,7 +99,7 @@ public class ExampleResourceTest {
     @Order(4)
     public  void testPutMethodWithServiceInject()
     {
-        Assertions.assertEquals("{\"putMethod\":\"Put Call was made using Service Method\"}", exampleService.putRequest());
+        assertEquals("{\"putMethod\":\"Put Call was made using Service Method\"}", exampleService.putRequest());
     }
 
     //WhiteBox Test
@@ -108,7 +107,7 @@ public class ExampleResourceTest {
     @Order(4)
     public  void testDeleteMethodWithServiceInject()
     {
-        Assertions.assertEquals("{\"deleteMethod\":\"Delete Call was made using Service Method\"}", exampleService.deleteRequest());
+        assertEquals("{\"deleteMethod\":\"Delete Call was made using Service Method\"}", exampleService.deleteRequest());
     }
 
 

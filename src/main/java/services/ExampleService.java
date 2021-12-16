@@ -35,6 +35,9 @@ public class ExampleService {
         jo = new JSONObject(json);
         int num1 = Integer.parseInt((String) jo.get("num1"));
         int num2 = Integer.parseInt((String) jo.get("num2"));
+        jo.clear();
+//        jo.put("num1", num1);
+//        jo.put("num2", num2);
         jo.put("sum", sum(num1,num2));
         return jo.toString();
     }
@@ -59,7 +62,7 @@ public class ExampleService {
 
 
     public int sum(int i, int j) {
-        return i + j;
+        return (i + j);
     }
 
 
